@@ -54,20 +54,30 @@ p {
 }
 
 img {
-    animation: spin 8s linear infinite;
+    animation: rock 8s ease-in-out infinite;
+    cursor: pointer;
 }
 
-@keyframes spin {
+img.spinning {
+    animation: spin 1.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes rock {
     0%   { transform: rotate(-10deg); }
     50%  { transform: rotate(10deg); }
     100% { transform: rotate(-10deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
 	</style>
 </head>
 <body>
 
 	<center>
-	<img src="corndog.png" alt="corndog games" style="width: 80%"><br>
+	<img src="corndog.png" alt="corndog games" style="width: 80%" id="corndog"><br>
 	<p>welcome to Corndog Games : )</p>
 	<p>we are 2 people making</p> 
 	<h1><a href="https://www.gnarworldgame.com">GNAR<br>WORLD</a></h1>
@@ -84,6 +94,18 @@ img {
 	</div>
 	-->
 			
+
+<script>
+const corndog = document.getElementById('corndog');
+corndog.addEventListener('click', () => {
+    corndog.classList.add('spinning');
+    corndog.addEventListener('animationend', () => {
+        setTimeout(() => {
+            corndog.classList.remove('spinning');
+        }, 100);
+    }, { once: true });
+});
+</script>
 
 </body>
 </html>
