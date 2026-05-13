@@ -1,2 +1,2 @@
 # corndoggamessite
-corndog games website
+[https://corndog.games/](https://corndog.games/)
