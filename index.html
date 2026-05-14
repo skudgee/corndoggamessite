@@ -54,7 +54,7 @@ p {
 }
 
 img {
-    animation: rock 8s ease-in-out infinite;
+    animation: rock 8s linear infinite;
     cursor: pointer;
 }
 
@@ -63,9 +63,10 @@ img.spinning {
 }
 
 @keyframes rock {
-    0%   { transform: rotate(-10deg); }
-    50%  { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(10deg); }
+    75%  { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
 }
 
 @keyframes spin {
@@ -96,15 +97,16 @@ img.spinning {
 			
 
 <script>
-const corndog = document.getElementById('corndog');
-corndog.addEventListener('click', () => {
-    corndog.classList.add('spinning');
-    corndog.addEventListener('animationend', () => {
-        setTimeout(() => {
-            corndog.classList.remove('spinning');
-        }, 100);
-    }, { once: true });
-});
+    const corndog = document.getElementById('corndog');
+
+    
+    corndog.addEventListener('click', () => {
+        corndog.classList.add('spinning');
+
+        corndog.addEventListener('animationend', () => {
+            setTimeout(() => corndog.classList.remove('spinning'), 100);
+        }, { once: true });
+    });
 </script>
 
 </body>
